@@ -1,0 +1,88 @@
+spring:
+    profiles:
+      active: dev
+
+---
+server:
+  port: 8066
+spring:
+    profiles: dev
+    datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://47.104.128.12:3306/cloud01?characterEncoding=utf-8
+      username: root
+      password: 123456
+      type: com.alibaba.druid.pool.DruidDataSource
+      dbcp2:
+        min-idle: 5
+        initial-size: 5
+        max-total: 5
+        max-wait-millis: 200
+
+#mybatis的配置
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.hnnd.cloudangle.entity
+
+
+
+#eureka client 端配置 告诉本工程 注册到 http://localhost:7001/eureka   的eurekaserver上
+eureka:
+  instance:
+    instance-id: cloudangle-provider8066
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://www.eureka7001.com:7001/eureka/
+#添加本微服务的info信息
+info:
+  app.name: $eureka.instance.instance-id$
+  auth.name: zhuwei
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+
+---
+server:
+  port: 8067
+spring:
+    profiles: prod
+    datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://47.104.128.12:3306/cloud02?characterEncoding=utf-8
+      username: root
+      password: 123456
+      type: com.alibaba.druid.pool.DruidDataSource
+      dbcp2:
+        min-idle: 5
+        initial-size: 5
+        max-total: 5
+        max-wait-millis: 200
+
+
+
+#mybatis的配置
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.hnnd.cloudangle.entity
+
+
+
+#eureka client 端配置 告诉本工程 注册到 http://localhost:7001/eureka   的eurekaserver上
+eureka:
+  instance:
+    instance-id: cloudangle-provider8067
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://www.eureka7002.com:7002/eureka/
+#添加本微服务的info信息
+info:
+  app.name: $eureka.instance.instance-id$
+  auth.name: zhuwei
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+
