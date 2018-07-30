@@ -7,7 +7,7 @@ server:
 spring:
   profiles: dev
   application:
-    name: cloudangle_config_client
+    name: cloudangle-config-client
 eureka:
   client:
     service-url:
@@ -18,7 +18,7 @@ server:
 spring:
   profiles: prod
   application:
-    name: cloudangle_config_client
+    name: cloudangle-config-client
 eureka:
   client:
     service-url:
