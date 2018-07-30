@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev
+server:
+  port: 7001
+#euraka的配置
+eureka:
+  instance:
+    hostname: www.eureka7001.com    #eureka的服务器的实例名称(ip)
+  client:
+    #eureka工程不注册自己
+    register-with-eureka: false
+    #表示本工程就是一个服务注册中心，只服务维护微服务，不去检索微服务
+    fetch-registry: false
+    service-url:
+       http://localhost:7001/eureka/   #暴露给eureka 客户端的服务注册地址
+      #defaultZone: http://www.eureka7002.com:7002/eureka/,http://www.eureka7003.com:7003/eureka/
+  server:
+    enable-self-preservation: true
+
+---
+spring:
+  profiles: prod
+server:
+  port: 7002
+#euraka的配置
+eureka:
+  instance:
+    hostname: www.eureka7002.com    #eureka的服务器的实例名称(ip)
+  client:
+    #eureka工程不注册自己
+    register-with-eureka: false
+    #表示本工程就是一个服务注册中心，只服务维护微服务，不去检索微服务
+    fetch-registry: false
+    service-url:
+       http://localhost:7002/eureka/   #暴露给eureka 客户端的服务注册地址
+      #defaultZone: http://www.eureka7002.com:7002/eureka/,http://www.eureka7003.com:7003/eureka/
+  server:
+    enable-self-preservation: true
