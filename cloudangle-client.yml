@@ -1,0 +1,25 @@
+spring:
+  profiles:
+    active: dev
+---
+server:
+  port: 8201
+spring:
+  profiles: dev
+  application:
+    name: cloudangle_config_client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.eureka7001.com:7001/eureka/
+---
+server:
+  port: 8202
+spring:
+  profiles: prod
+  application:
+    name: cloudangle_config_client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.eureka7001.com:7001/eureka/
